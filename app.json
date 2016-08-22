@@ -1,8 +1,8 @@
 {
-  "name": "Start on Heroku: Node.js",
-  "description": "A barebones Node.js app using Express 4",
+  "name": "R Soccer Organizer",
+  "description": "Just want to create an easier way to scroll through reddit soccer content",
   "repository": "https://github.com/heroku/node-js-getting-started",
   "logo": "http://node-js-sample.herokuapp.com/node.svg",
-  "keywords": ["node", "express", "static"],
+  "keywords": ["node", "reddit", "soccer"],
   "image": "heroku/nodejs"
 }
