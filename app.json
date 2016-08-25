@@ -1,8 +1,7 @@
 {
   "name": "R Soccer Organizer",
   "description": "Just want to create an easier way to scroll through reddit soccer content",
-  "repository": "https://github.com/heroku/node-js-getting-started",
-  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "repository": "https://github.com/itorras13/rSoccerOrganizer",
   "keywords": ["node", "reddit", "soccer"],
   "image": "heroku/nodejs"
 }
