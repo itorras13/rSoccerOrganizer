@@ -27,33 +27,23 @@
     <div class="tab-content">
       <div id="goals" class="tab-pane fade in active">
         <h3>Goals</h3>
-        <p ng-repeat='post in goals' class='post'>
-          <button type="button" class="btn btn-xs btn-primary" disabled="disabled"> {{ post.data.ups }} <span class="glyphicon glyphicon-arrow-up"></span> </button><a target="_blank" href="{{ post.data.url }}"> {{ post.data.title }} </a> <a target="_blank" href="https://reddit.com{{post.data.permalink}}">[comments]</a>
-        </p>
+        <p ng-repeat='post in goals' media-post='post' index="{{$index}}"></p>
       </div>
       <div id="threads" class="tab-pane fade">
         <h3>Match Threads</h3>
-        <p ng-repeat='post in threads' class='post'>
-          <button type="button" class="btn btn-xs btn-primary" disabled="disabled"> {{ post.data.ups }} <span class="glyphicon glyphicon-arrow-up"></span> </button><a target="_blank" href="{{ post.data.url }}"> {{ post.data.title }} </a>
-        </p>
+        <p ng-repeat='post in threads' reddit-post="post"></p>
       </div>
       <div id="reddit" class="tab-pane fade">
         <h3>Reddit Posts</h3>
-        <p ng-repeat='post in reddit' class='post'>
-          <button type="button" class="btn btn-xs btn-primary" disabled="disabled"> {{ post.data.ups }} <span class="glyphicon glyphicon-arrow-up"></span> </button><a target="_blank" href="{{ post.data.url }}"> {{ post.data.title }} </a>
-        </p>
+        <p ng-repeat='post in reddit' reddit-post="post"></p>
       </div>
       <div id="media" class="tab-pane fade">
         <h3>Media</h3>
-        <p ng-repeat='post in media' class='post'>
-          <button type="button" class="btn btn-xs btn-primary" disabled="disabled"> {{ post.data.ups }} <span class="glyphicon glyphicon-arrow-up"></span> </button><a target="_blank" href="{{ post.data.url }}"> {{ post.data.title }} </a>
-        </p>
+        <p ng-repeat='post in media' media-post='post' index="{{$index}}{{$index}}"></p>
       </div>
       <div id="rest" class="tab-pane fade">
         <h3>Other</h3>
-        <p ng-repeat='post in rest' class='post'>
-          <button type="button" class="btn btn-xs btn-primary" disabled="disabled"> {{ post.data.ups }} <span class="glyphicon glyphicon-arrow-up"></span> </button><a target="_blank" href="{{ post.data.url }}"> {{ post.data.title }} </a>
-        </p>
+        <p ng-repeat='post in rest' post="post"></p>
       </div>
     </div>
   </div>
