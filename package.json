@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "ejs": "2.4.1",
-    "express": "4.13.3"
+    "express": "4.13.3",
+    "request": "2.74.0"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,6 @@
     "express"
   ],
   "homepage": "https://github.com/itorras13/rSoccerOrganizer#readme",
+  "license": "MIT",
   "author": "Ignacio Torras"
 }
