@@ -16,7 +16,7 @@ $(document).on("click", "#embedModal", function(){
 		'<iframe src="' + url +  '" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen scrolling="no" style="width: 100%; height: 100%; position: absolute;"></iframe></div>')
   	$('#myModal').modal('show')
 });
-$(document).on("click", "#closeModal", function(){
+$('#myModal').on('hidden.bs.modal', function (e) {
 	$(".modal-body").html("");
 	$("#myModalLabel").text("");
 });
