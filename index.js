@@ -16,7 +16,11 @@ app.get('/', function(req, res) {
 });
 
 app.get('/.json', function(req, response) {
-	request('https://www.reddit.com/r/soccer/top/.json?sort=top&t=week', function (error, res, body) {
+	url = 'https://www.reddit.com/r/soccer/' + req.query.sort + '/.json?t=' + req.query.time
+	if (url.indexOf('undefined') > -1) {
+		url = 'https://www.reddit.com/r/soccer/hot/.json'
+	}
+	request(url, function (error, res, body) {
 	    //Check for error
 	    if(error){
 	    	return console.log('Error:', error);

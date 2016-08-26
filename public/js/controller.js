@@ -51,9 +51,8 @@ app.directive('mediaPost', function () {
 });
 
 app.controller('myCtrl', function($scope, $http) {
-    $http.get('/.json').then(function(res) {
-	    var data = JSON.parse(res.data);
-	    $scope.goals = [];
+	function loadPosts(data) {
+		$scope.goals = [];
 	    $scope.threads = [];
 	    $scope.rest = [];
 	    $scope.reddit = [];
@@ -90,5 +89,19 @@ app.controller('myCtrl', function($scope, $http) {
 		    	$scope.rest.push(children[i]);
 		    }
 		}
+	}
+    $http.get('/.json').then(function(res) {
+	    var data = JSON.parse(res.data);
+	    loadPosts(data);
 	});
+	$("#loadForm").submit(function(){
+		var parameters = {
+			sort: $("#rankingSel").val(),
+			time: $("#timeSel").val()
+		}
+        $http.get('/.json', { params: parameters }).then(function(res) {
+        	var data = JSON.parse(res.data);
+		    loadPosts(data);
+	    });
+    });
 });
