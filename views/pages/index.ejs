@@ -29,14 +29,19 @@
           </div>
           <div class="form-group">
             <label for="timeSel">Time:</label>
-            <select class="form-control" id="timeSel" disabled>
-              <option value=""></option>
-              <option value="hour">1 Hour</option>
+            <select class="form-control" id="timeSel">
               <option value="day">24 Hours</option>
+              <option value="hour">1 Hour</option>
               <option value="week">Week</option>
               <option value="month">Month</option>
               <option value="year">Year</option>
               <option value="all">All Time</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="countSel">Post Count:</label>
+            <select class="form-control" id="countSel">
+              <option value="25">25</option>
             </select>
           </div>
           <button type="submit" class="btn btn-default">Load Reddit Posts</button>
@@ -44,19 +49,27 @@
       </div>
       <div class="row top-buffer">
         <ul class="nav nav-pills nav-justified">
-          <li class="active"><a data-toggle="tab" href="#goals">Goals</a></li>
-          <li><a data-toggle="tab" href="#threads">Match Threads</a></li>
-          <li><a data-toggle="tab" href="#reddit">Reddit</a></li>
-          <li><a data-toggle="tab" href="#media">Media</a></li>
-          <li><a data-toggle="tab" href="#rest">Others</a></li>
+          <li class="active"><a data-toggle="tab" href="#goals" class="tabs">Goals</a></li>
+          <li><a data-toggle="tab" href="#threads" class="tabs">Match Threads</a></li>
+          <li><a data-toggle="tab" href="#reddit" class="tabs">Reddit</a></li>
+          <li><a data-toggle="tab" href="#media" class="tabs">Media</a></li>
+          <li><a data-toggle="tab" href="#rest" class="tabs">Others</a></li>
         </ul> 
       </div>
       <div class="row">
         <div class="tab-content">
           <div id="goals" class="tab-pane fade in active">
-            <h3>Goals</h3>
-            <h5>Click on button to pop up video on screen</h5>
-            <p ng-repeat='post in goals' media-post='post' index="{{$index}}"></p>
+            <div class="row">
+              <div class="col-md-6">
+                <h3>Goals</h3>
+                <h5>Click on button to pop up video on screen</h5>
+                <p ng-repeat='post in goals' goal-post='post' index="{{$index}}"></p>
+              </div>
+              <div class="col-md-6">
+                <h3 id="embedTitleGoal"></h3>
+                <span id="embedFrameGoal"></span>
+              </div>
+            </div>
           </div>
           <div id="threads" class="tab-pane fade">
             <h3>Match Threads</h3>
@@ -67,9 +80,17 @@
             <p ng-repeat='post in reddit' reddit-post="post"></p>
           </div>
           <div id="media" class="tab-pane fade">
-            <h3>Media</h3>
-            <h5>Click on button to pop up video on screen</h5>
-            <p ng-repeat='post in media' media-post='post' index="{{$index}}{{$index}}"></p>
+            <div class="row">
+              <div class="col-md-6">
+                <h3>Media</h3>
+                <h5>Click on button to pop up video on screen</h5>
+                <p ng-repeat='post in media' media-post='post' index="{{$index}}"></p>
+              </div>
+              <div class="col-md-6">
+                <h3 id="embedTitleMedia"></h3>
+                <span id="embedFrameMedia"></span>
+              </div>
+            </div>
           </div>
           <div id="rest" class="tab-pane fade">
             <h3>Other</h3>
@@ -86,23 +107,6 @@
       </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel"></h4>
-          </div>
-          <div class="modal-body">
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-      </div>
-    </div>
   </div>
   <script src="/js/controller.js"></script>
   <script src="/js/formControl.js"></script>

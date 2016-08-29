@@ -43,7 +43,20 @@ app.directive('mediaPost', function () {
 		restrict: 'EA',
 		template: '<button type="button" class="btn btn-xs btn-primary" disabled="disabled"> {{ post.data.ups }} <span class="glyphicon glyphicon-arrow-up"></span></button>' +
 		'<a target="_blank" href="{{ post.data.url }}"> {{ post.data.title }} </a> <a target="_blank" href="https://reddit.com{{post.data.permalink}}">[comments]</a>' +
-		'&nbsp;<button type="button" class="btn btn-primary btn-xs" id="embedModal" data-button="{{post.data.url}}|||{{post.data.title}}"> View Media </button>'
+		'&nbsp;<button type="button" class="btn btn-primary btn-xs" id="embedMedia" data-button="{{post.data.url}}|||{{post.data.title}}"> View Media </button>'
+	};
+});
+
+app.directive('goalPost', function () {
+	return {
+		scope: {
+			post: '=goalPost',
+			index: '@'
+		},
+		restrict: 'EA',
+		template: '<button type="button" class="btn btn-xs btn-primary" disabled="disabled"> {{ post.data.ups }} <span class="glyphicon glyphicon-arrow-up"></span></button>' +
+		'<a target="_blank" href="{{ post.data.url }}"> {{ post.data.title }} </a> <a target="_blank" href="https://reddit.com{{post.data.permalink}}">[comments]</a>' +
+		'&nbsp;<button type="button" class="btn btn-primary btn-xs" id="embedGoal" data-button="{{post.data.url}}|||{{post.data.title}}"> View Media </button>'
 	};
 });
 
@@ -94,7 +107,8 @@ app.controller('myCtrl', function($scope, $http) {
 	$("#loadForm").submit(function(){
 		var parameters = {
 			sort: $("#rankingSel").val(),
-			time: $("#timeSel").val()
+			time: $("#timeSel").val(),
+			count: $("#countSel").val()
 		}
 		$http.get('/.json', { params: parameters }).then(function(res) {
 			var data = JSON.parse(res.data);
