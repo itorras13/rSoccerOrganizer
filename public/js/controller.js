@@ -67,7 +67,7 @@ app.controller('myCtrl', function($scope, $http) {
 		$scope.rest = [];
 		$scope.reddit = [];
 		$scope.media = [];
-		var children = data.data.children
+		var children = data.children;
 		for (var i = 0; i < children.length; i++) {
 			var title = children[i].data.title;
 			title = title.toLowerCase();
@@ -101,18 +101,18 @@ app.controller('myCtrl', function($scope, $http) {
 		}
 	}
 	$http.get('/.json').then(function(res) {
-		var data = JSON.parse(res.data);
-		loadPosts(data);
+		loadPosts(res.data);
 	});
 	$("#loadForm").submit(function(){
+		var count = $("#countSel").val();
 		var parameters = {
 			sort: $("#rankingSel").val(),
 			time: $("#timeSel").val(),
-			count: $("#countSel").val()
+			q: $('#query').val(),
+			after: ""
 		}
 		$http.get('/.json', { params: parameters }).then(function(res) {
-			var data = JSON.parse(res.data);
-			loadPosts(data);
+			loadPosts(res.data);
 		});
 	});
 });

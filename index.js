@@ -15,22 +15,27 @@ app.get('/', function(req, res) {
 	res.render('pages/index')
 });
 
-app.get('/.json', function(req, response) {
-	url = 'https://www.reddit.com/r/soccer/' + req.query.sort + '/.json?t=' + req.query.time
-	if (url.indexOf('undefined') > -1) {
-		url = 'https://www.reddit.com/r/soccer/hot/.json'
+app.get('/.json', function(req, res) {
+	if(req.query.q){
+		url = 'https://www.reddit.com/r/soccer/search.json?restrict_sr=on&q=' + req.query.q + '&sort=' + req.query.sort + '&t=' + req.query.time;
+	} else {
+		url = 'https://www.reddit.com/r/soccer/' + req.query.sort + '/.json?t=' + req.query.time + '&after=' + req.query.after;
+		if (url.indexOf('undefined') > -1) {
+			url = 'https://www.reddit.com/r/soccer/hot/.json'
+		}
 	}
-	request(url, function (error, res, body) {
+	request(url, function (error, response, body) {
 	    //Check for error
 	    if(error){
 	    	return console.log('Error:', error);
 	    }
 	    //Check for right status code
-	    if(res.statusCode !== 200){
-	    	return console.log('Invalid Status Code Returned:', res.statusCode);
+	    if(response.statusCode !== 200){
+	    	return console.log('Invalid Status Code Returned:', response.statusCode);
 	    }
 	    //All is good. Print the body
-	    response.json(body);
+	    data = JSON.parse(body);
+	    res.send(data.data);
 	});
 });
 

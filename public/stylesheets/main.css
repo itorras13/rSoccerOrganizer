@@ -33,3 +33,7 @@
 .top-buffer { 
   margin-top:20px; 
 }
+
+label {
+  margin-left: 10px;
+}
