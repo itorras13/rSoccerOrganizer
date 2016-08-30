@@ -30,8 +30,8 @@
           <div class="form-group">
             <label for="timeSel">Time:</label>
             <select class="form-control" id="timeSel">
-              <option value="day">24 Hours</option>
               <option value="hour">1 Hour</option>
+              <option value="day" selected>24 Hours</option>
               <option value="week">Week</option>
               <option value="month">Month</option>
               <option value="year">Year</option>
@@ -53,11 +53,11 @@
       </div>
       <div class="row top-buffer">
         <ul class="nav nav-pills nav-justified">
-          <li class="active"><a data-toggle="tab" href="#goals" class="tabs">Goals</a></li>
-          <li><a data-toggle="tab" href="#threads" class="tabs">Match Threads</a></li>
-          <li><a data-toggle="tab" href="#reddit" class="tabs">Reddit</a></li>
-          <li><a data-toggle="tab" href="#media" class="tabs">Media</a></li>
-          <li><a data-toggle="tab" href="#rest" class="tabs">Others</a></li>
+          <li class="active"><a data-toggle="tab" href="#goals" class="tabs">Goals - {{goals.length}}</a></li>
+          <li><a data-toggle="tab" href="#media" class="tabs">Media - {{media.length}}</a></li>
+          <li><a data-toggle="tab" href="#threads" class="tabs">Match Threads - {{threads.length}}</a></li>
+          <li><a data-toggle="tab" href="#reddit" class="tabs">Reddit - {{reddit.length}}</a></li>
+          <li><a data-toggle="tab" href="#rest" class="tabs">Others - {{rest.length}}</a></li>
         </ul> 
       </div>
       <div class="row">
